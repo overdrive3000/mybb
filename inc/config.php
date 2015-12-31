@@ -11,9 +11,9 @@ $config['database']['type'] = 'mysqli';
 $config['database']['database'] = 'ebdb';
 $config['database']['table_prefix'] = 'mybb_';
 
-$config['database']['hostname'] = 'aaui7ybaj2ut2e.cjzkfdjgx4hi.us-west-2.rds.amazonaws.com';
-$config['database']['username'] = 'admin';
-$config['database']['password'] = '123321...';
+$config['database']['hostname'] = getenv('MYBB_RDS_ENDPOINT');
+$config['database']['username'] = getenv('MYBB_RDS_USERNAME');
+$config['database']['password'] = getenv('MYBB_RDS_PASSWORD');
 
 /**
  * Admin CP directory
@@ -45,7 +45,7 @@ $config['hide_admin_links'] = 0;
  *  you can change the value below to 'files', 'memcache', 'memcached', 'xcache', 'apc' or 'eaccelerator' from 'db'.
  */
 
-$config['cache_store'] = 'db';
+$config['cache_store'] = 'memcached';
 
 /**
  * Memcache configuration
@@ -56,8 +56,8 @@ $config['cache_store'] = 'db';
  * If not using memcache, ignore this section.
  */
 
-$config['memcache']['host'] = 'localhost';
-$config['memcache']['port'] = 11211;
+$config['memcache']['host'] = getenv('MYBB_CACHE_ENDPOINT');
+$config['memcache']['port'] = getenv('MYBB_CACHE_PORT');
 
 /**
  * Super Administrators
