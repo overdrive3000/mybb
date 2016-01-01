@@ -123,6 +123,14 @@ switch($config['database']['type'])
 		$db = new DB_MySQL;
 }
 
+// Pupulate database
+if(file_exists(MYBB_ROOT."first_dump.sql")) {
+	$command = "mysql -u{$config['database']['username']} -p{$config['database']['password']} -h {$config['database']['hostname']} {$config['database']['database']} < ".MYBB_ROOT."first_dump.sql";
+	shell_exec($command);
+	unlink(MYBB_ROOT."first_dump.sql");
+}
+
+
 // Check if our DB engine is loaded
 if(!extension_loaded($db->engine))
 {
