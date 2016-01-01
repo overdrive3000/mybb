@@ -8,7 +8,7 @@
  */
 
 $config['database']['type'] = 'mysqli';
-$config['database']['database'] = 'ebdb';
+$config['database']['database'] = getenv('MYBB_RDS_DATABASE');
 $config['database']['table_prefix'] = 'mybb_';
 
 $config['database']['hostname'] = getenv('MYBB_RDS_ENDPOINT');
